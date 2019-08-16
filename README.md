@@ -1,2 +1,1 @@
-# basic-uvm-env-for-GCD
-Basic UVM environment for GCD IP
+# Basic UVM environment for Greatest common divisor (GCD) IP

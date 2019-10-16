@@ -56,7 +56,6 @@ class mdc_cover extends uvm_component;
     req.copy (tr_req);
     transa = transa + 1;
     if(transa >= min_transa)begin
-      $display("Dropou Transa");
       ->end_of_simulation;
     end
   endfunction: write_req
@@ -64,7 +63,6 @@ class mdc_cover extends uvm_component;
   function void write_resp(mdc_transaction_out tr_resp);
     resp.copy(tr_resp);
     // if($get_coverage() >= min_cover) begin
-    //  $display("Dropou Cover");
     //  ->end_of_simulation;
     // end
   endfunction: write_resp

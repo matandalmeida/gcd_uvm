@@ -12,7 +12,7 @@
 
 class mdc_monitor_in extends uvm_monitor;
 
-  vif_mst  vif_in;
+  vif  vif_in;
   event begin_record, end_record;
   mdc_transaction_in  tr_in;
   uvm_analysis_port #(mdc_transaction_in) req_port;
@@ -27,7 +27,7 @@ class mdc_monitor_in extends uvm_monitor;
 
   virtual function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    assert(uvm_config_db#(vif_mst)::get(this, "", "vif_in", vif_in));
+    assert(uvm_config_db#(vif)::get(this, "", "vif", vif_in));
     tr_in = mdc_transaction_in::type_id::create("tr_in", this);
   endfunction
 

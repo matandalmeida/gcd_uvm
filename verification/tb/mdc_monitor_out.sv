@@ -12,7 +12,7 @@
 
 class mdc_monitor_out extends uvm_monitor;
 
-  vif_slv  vif_out;
+  vif  vif_out;
   event begin_record, end_record;
   mdc_transaction_out tr_out;
   uvm_analysis_port #(mdc_transaction_out) resp_port;
@@ -25,7 +25,7 @@ class mdc_monitor_out extends uvm_monitor;
 
   virtual function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    assert(uvm_config_db#(vif_slv)::get(this, "", "vif_out", vif_out));
+    assert(uvm_config_db#(vif)::get(this, "", "vif", vif_out));
     tr_out = mdc_transaction_out::type_id::create("tr_out", this);
   endfunction
 

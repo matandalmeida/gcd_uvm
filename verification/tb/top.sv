@@ -45,8 +45,7 @@ module top;
     end
 
     initial begin
-      uvm_config_db#(vif_mst)::set(uvm_root::get(), "*", "vif_in", dut_if);
-      uvm_config_db#(vif_slv)::set(uvm_root::get(), "*", "vif_out", dut_if);
+      uvm_config_db#(vif)::set(uvm_root::get(), "*", "vif", dut_if);
       uvm_config_db#(int)::set(uvm_root::get(),"*", "min_cover", min_cover);
       uvm_config_db#(int)::set(uvm_root::get(),"*", "min_transa", min_transa);
 

@@ -10,12 +10,12 @@
 //     REVISION: ---
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-typedef virtual mdc_if.master vif_mst;
+typedef virtual mdc_if.master vif;
 
 class mdc_driver_in extends uvm_driver #(mdc_transaction_in);
   `uvm_component_utils(mdc_driver_in)
 
-  vif_mst vif_in;
+  vif vif_in;
   mdc_transaction_in tr_in;
   bit item_done;
   event begin_record,end_record;
@@ -26,7 +26,7 @@ class mdc_driver_in extends uvm_driver #(mdc_transaction_in);
 
   virtual function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    if(!uvm_config_db#(vif_mst)::get(this, "", "vif_in", vif_in)) begin
+    if(!uvm_config_db#(vif)::get(this, "", "vif", vif_in)) begin
       `uvm_fatal("NOVIF", "failed to get virtual interface")
     end
   endfunction
@@ -45,9 +45,6 @@ class mdc_driver_in extends uvm_driver #(mdc_transaction_in);
           if(tr_in) begin
             if(!vif_in.busy_o) begin
               @(posedge vif_in.clk_i); 
-              $display("enb ",tr_in.enb);
-              $display("data_x ",tr_in.data_x);
-              $display("data_y ",tr_in.data_y);
               vif_in.enb_i = 1;
               vif_in.dtx_i = tr_in.data_x;
               vif_in.dty_i = tr_in.data_y;

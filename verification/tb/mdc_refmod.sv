@@ -43,7 +43,6 @@ class mdc_refmod extends uvm_component;
       begin_tr(tr_out, "ref_out)");
       gcd = my_mdc(tr_in.data_x, tr_in.data_y);
       tr_out.result = gcd;
-      $display("result ", tr_out.result);
       out.write(tr_out);
     end
   endtask: run_phase
